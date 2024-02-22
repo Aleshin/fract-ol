@@ -5,7 +5,7 @@ RM = rm -f
 NAME = fractol
 HEADER = fractol.h
 
-SRCS =	fractol.c
+SRCS =	fractol.c calculations.c
 
 OBJS = $(SRCS:.c=.o)
 
