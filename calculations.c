@@ -12,6 +12,26 @@
 
 #include "fractol.h"
 
+void	pixel_to_complex(t_vars *vars)
+{
+	vars->a = vars->x * (vars->range_x / vars->width) + vars->min_x;
+	vars->b = vars->y * (vars->range_y / vars->height) + vars->min_y;
+}
+
+void	put_pixel_to_image(t_vars *vars, int color)
+{
+	int	pixel;
+
+	pixel = (vars->y * vars->line_length) + (vars->x * 4);
+	if (vars->bits_per_pixel == 32)
+	{
+		vars->addr[pixel + 0] = (color >> 0) & 0xFF;
+		vars->addr[pixel + 1] = (color >> 8) & 0xFF;
+		vars->addr[pixel + 2] = (color >> 16) & 0xFF;
+		vars->addr[pixel + 3] = (color >> 24) & 0xFF;
+	}
+}
+
 int	mandelbrot(t_vars *vars)
 {
 	double	x;

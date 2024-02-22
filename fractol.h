@@ -38,6 +38,10 @@ typedef struct s_vars
 	double	julia_b;
 	int		width;
 	int		height;
+	double	min_x;
+	double	min_y;
+	double	range_x;
+	double	range_y;
 }	t_vars;
 
 void	put_pixel_to_image(t_vars *vars, int color);
