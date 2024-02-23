@@ -20,31 +20,34 @@
 #define ON_KEYUP 126
 #define ON_DESTROY 17
 
+typedef struct s_vars	t_vars;
+typedef int				(*t_function_pointer)(t_vars *);
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		iteration;
-	int		x;
-	int		y;
-	double	a;
-	double	b;
-	double	julia_a;
-	double	julia_b;
-	int		width;
-	int		height;
-	double	a0;
-	double	b0;
-	double	width_a;
-	double	height_b;
-	int		mouse_drag;
-	int		mouse_x;
-	int		mouse_y;
+	void				*mlx;
+	void				*win;
+	void				*img;
+	char				*addr;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
+	int					iteration;
+	int					x;
+	int					y;
+	double				a;
+	double				b;
+	double				julia_a;
+	double				julia_b;
+	int					width;
+	int					height;
+	double				a0;
+	double				b0;
+	double				width_a;
+	double				height_b;
+	int					mouse_drag;
+	int					mouse_x;
+	int					mouse_y;
+	t_function_pointer	f_pointer;
 }	t_vars;
 
 void	put_pixel_to_image(t_vars *vars, int color);

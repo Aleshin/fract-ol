@@ -45,7 +45,7 @@ int	scan_image(t_vars *vars)
 		vars->x = 0;
 		while (vars->x < vars->width)
 		{
-			if (julia(vars) < vars->iteration) //mandelbrot(vars) < vars->iteration) //
+			if (vars->f_pointer(vars) < vars->iteration)
 				put_pixel_to_image(vars, 0xFF0000);
 			else
 				put_pixel_to_image(vars, 0x000000);
@@ -80,10 +80,16 @@ void	init(t_vars *vars)
 			&vars->line_length, &vars->endian);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	if (argc != 2)
+		return (0);
+	if (argv[1][0] == '1')
+		vars.f_pointer = mandelbrot;
+	else if (argv[1][0] == '2')
+		vars.f_pointer = julia;
 	init(&vars);
 	mlx_key_hook(vars.win, key_press, &vars);
 	mlx_hook(vars.win, 17, 0, close_window, NULL);
