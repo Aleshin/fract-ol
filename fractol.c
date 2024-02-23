@@ -40,13 +40,16 @@ int	key_press(int keycode, t_vars *vars)
 
 int	scan_image(t_vars *vars)
 {
+	int	iteractions;
+
 	while (vars->y < vars->height)
 	{
 		vars->x = 0;
 		while (vars->x < vars->width)
 		{
-			if (vars->f_pointer(vars) < vars->iteration)
-				put_pixel_to_image(vars, 0xFF0000);
+			iteractions = vars->f_pointer(vars);
+			if (iteractions < vars->iteration)
+				put_pixel_to_image(vars, color(vars, iteractions));
 			else
 				put_pixel_to_image(vars, 0x000000);
 			vars->x++;
@@ -74,6 +77,9 @@ void	init(t_vars *vars)
 	vars->height_b = 4;
 	vars->mouse_drag = 0;
 	vars->mlx = mlx_init();
+	vars->colors[0] = 0xFF0000;
+	vars->colors[1] = 0x00FF00;
+	vars->colors[2] = 0x0000FF;
 	vars->win = mlx_new_window(vars->mlx, vars->width, vars->height, "Fractol");
 	vars->img = mlx_new_image(vars->mlx, vars->width, vars->height);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel,

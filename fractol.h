@@ -19,6 +19,7 @@
 #define ON_KEYDOWN 125
 #define ON_KEYUP 126
 #define ON_DESTROY 17
+#define COLORS 3
 
 typedef struct s_vars	t_vars;
 typedef int				(*t_function_pointer)(t_vars *);
@@ -47,10 +48,12 @@ typedef struct s_vars
 	int					mouse_drag;
 	int					mouse_x;
 	int					mouse_y;
+	int					colors[COLORS];
 	t_function_pointer	f_pointer;
 }	t_vars;
 
 void	put_pixel_to_image(t_vars *vars, int color);
+int		color(t_vars *vars, int iterations);
 int		close_window(void);
 int		key_press(int keycode, t_vars *vars);
 int		mouse_hook(int button, int x, int y, t_vars *vars);

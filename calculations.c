@@ -18,6 +18,11 @@ void	pixel_to_complex(t_vars *vars)
 	vars->b = vars->y * (vars->height_b / vars->height) + vars->b0;
 }
 
+int	color(t_vars *vars, int iterations)
+{
+	return (vars->colors[iterations % COLORS]);
+}
+
 void	put_pixel_to_image(t_vars *vars, int color)
 {
 	int	pixel;
