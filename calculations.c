@@ -14,8 +14,8 @@
 
 void	pixel_to_complex(t_vars *vars)
 {
-	vars->a = vars->x * (vars->range_x / vars->width) + vars->min_x;
-	vars->b = vars->y * (vars->range_y / vars->height) + vars->min_y;
+	vars->a = vars->x * (vars->width_a / vars->width) + vars->a0;
+	vars->b = vars->y * (vars->height_b / vars->height) + vars->b0;
 }
 
 void	put_pixel_to_image(t_vars *vars, int color)

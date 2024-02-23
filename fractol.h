@@ -38,14 +38,22 @@ typedef struct s_vars
 	double	julia_b;
 	int		width;
 	int		height;
-	double	min_x;
-	double	min_y;
-	double	range_x;
-	double	range_y;
+	double	a0;
+	double	b0;
+	double	width_a;
+	double	height_b;
+	int		mouse_drag;
+	int		mouse_x;
+	int		mouse_y;
 }	t_vars;
 
 void	put_pixel_to_image(t_vars *vars, int color);
+int		close_window(void);
 int		key_press(int keycode, t_vars *vars);
+int		mouse_hook(int button, int x, int y, t_vars *vars);
+int		mouse_wheel(int button, int x, int y, t_vars *vars);
+int		mouse_move(int x, int y, t_vars *vars);
+int		mouse_release(int button, int x, int y, t_vars *vars);
 void	pixel_to_complex(t_vars *vars);
 int		mandelbrot(t_vars *vars);
 int		julia(t_vars *vars);
