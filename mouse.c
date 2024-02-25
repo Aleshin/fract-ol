@@ -12,6 +12,11 @@
 
 #include "fractol.h"
 
+int	close_window(void)
+{
+	exit (0);
+}
+
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
 	double	ratio_x;

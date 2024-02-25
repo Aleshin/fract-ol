@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #define ESC_KEY 53

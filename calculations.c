@@ -20,7 +20,19 @@ void	pixel_to_complex(t_vars *vars)
 
 int	color(t_vars *vars, int iterations)
 {
-	return (vars->colors[iterations % COLORS]);
+	double	t;
+	int		color;
+
+	t = (double)iterations / (double)vars->iteration;
+	color = 0;
+	color = color << 8;
+	color += (unsigned char)(vars->colors[0] * (1 - t) * t * t * t * 255);
+	color = color << 8;
+	color += (unsigned char)(vars->colors[1] * (1 - t) * (1 - t) * t * t * 255);
+	color = color << 8;
+	color += (unsigned char)(vars->colors[2] * (1 - t) * (1 - t) * (1 - t)
+			* t * 255);
+	return (color);
 }
 
 void	put_pixel_to_image(t_vars *vars, int color)
