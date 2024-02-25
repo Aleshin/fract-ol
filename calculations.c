@@ -51,9 +51,9 @@ void	put_pixel_to_image(t_vars *vars, int color)
 
 int	mandelbrot(t_vars *vars)
 {
-	double	x;
-	double	y;
-	double	temp;
+	long double	x;
+	long double	y;
+	long double	temp;
 	int		i;
 
 	x = 0;

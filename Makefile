@@ -9,10 +9,13 @@ SRCS =	fractol.c calculations.c mouse.c
 
 OBJS = $(SRCS:.c=.o)
 
-%.o:%.c 	$(HEADER) Makefile
+%.o:%.c 	$(HEADER) minilib Makefile
 			$(CC) $(CFLAGS) -c $< -o $@
 
-all: 		$(NAME)
+all: 		minilib $(NAME)
+
+minilib:
+	make -C ./mlx &>/dev/null
 
 $(NAME): 	$(OBJS)
 			$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
