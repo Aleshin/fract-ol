@@ -54,7 +54,7 @@ int	mandelbrot(t_vars *vars)
 	long double	x;
 	long double	y;
 	long double	temp;
-	int		i;
+	int			i;
 
 	x = 0;
 	y = 0;

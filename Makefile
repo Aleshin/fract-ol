@@ -8,19 +8,21 @@ HEADER = fractol.h
 SRCS =	fractol.c calculations.c mouse.c
 
 OBJS = $(SRCS:.c=.o)
+MINILIBX = ./mlx/libmlx.a
 
-%.o:%.c 	$(HEADER) minilib Makefile
+%.o:%.c 	$(HEADER) Makefile
 			$(CC) $(CFLAGS) -c $< -o $@
 
-all: 		minilib $(NAME)
+all: 		mlxrule $(NAME)
 
-minilib:
-	make -C ./mlx &>/dev/null
+mlxrule:
+	make -C ./mlx
 
-$(NAME): 	$(OBJS)
+$(NAME): 	$(OBJS) $(MINILIBX)
 			$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
+			make clean -C ./mlx
 			$(RM) $(OBJS)
 
 fclean: 	clean
