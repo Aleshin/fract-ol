@@ -104,9 +104,9 @@ int	main(int argc, char **argv)
 		man();
 		return (0);
 	}
-	if (argv[1][0] == '1')
+	if (argv[1][0] == '1' && argv[1][1] == '\0')
 		vars.f_pointer = mandelbrot;
-	else if (argv[1][0] == '2')
+	else if (argv[1][0] == '2' && argv[1][1] == '\0')
 		vars.f_pointer = julia;
 	else
 	{
